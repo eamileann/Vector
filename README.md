@@ -13,7 +13,7 @@ vector.c and vector.h can be used as any other C header and source files - just 
 Well, I hope so, I did just simple test, file test.c is also included as a usage example. I compiled it with -std=c99 -pedantic -Wall -Werror flags on my Ubuntu machine and runned also with valgrind, it caused no memory leaks or other errors and it seems it does what it is suposed to do.
 
 # Can you help me?
-Sure - if you would like to write som real tests, I will be very glad. I will be also really thankful for any bug report, advice, recommendation or additional funcionality suggestion you miss - you can leave comment here on github or write me to michalpajtinka@gmail.com.
+Sure - if you would like to write some real tests, I will be very glad. I will be also really thankful for any bug report, advice, recommendation or suggestion for additional funcionality you miss - you can leave comment here on github or write me to michalpajtinka@gmail.com.
 
 # License
 This project is licensed under the terms of the MIT license.
