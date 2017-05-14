@@ -137,6 +137,7 @@ int main()
 
         printf("test - swapping back:\n");
         vector_swap(vec, tmp);
+        vector_delete(tmp);
         test(vec);
 
         printf("test - capacity enlarged to 128:\n");
