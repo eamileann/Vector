@@ -188,11 +188,25 @@ bool vector_erase(Vector *vec, size_t pos)
 }
 
 
-void vector_swap(Vector **first, Vector **second)
+bool vector_swap(Vector *first, Vector *second)
 {
-        Vector *tmp = *first;
-        *first = *second;
-        *second = tmp;
+        if (first == NULL || second == NULL) {
+                return false;
+        }
+
+        void **data = first->data_array;
+        size_t size = first->size;
+        size_t capacity = first->capacity;
+
+        first->data_array = second->data_array;
+        first->size = second->size;
+        first->capacity = second->capacity;
+
+        second->data_array = data;
+        second->size = size;
+        second->capacity = capacity;
+
+        return true;
 }
 
 

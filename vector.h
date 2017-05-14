@@ -113,17 +113,40 @@ size_t vector_size(Vector *vec);
 
 
 /**
- * @brief 
- * 
- * @param vec   
- * @param num
- * @return      
+ * @brief Change the capacity of vector
+ *
+ * This function allocates memory for @p num of elements.
+ * If @p num is:
+ * a) bigger than current capacity:
+ *      - data array is realloced so that @p num elements fit in
+ * b) smaller than current capacity:
+ *      - capacity is reduced to @p num elements
+ *      - if @p num is also smaller then current number of elements,
+ *        content of vector is reduced to its first @p num elements, removing
+ *        elements behind them (those are not free`d, if were allocated before)
+ * c) special value NPOS:
+ *      - size is adjusted automatically
+ *      - when called, function checks, whether there is space for another
+ *        element:
+ *              - if so, it does nothing, just returns @c true
+ *              - if there is no more space, it increases size to
+ *                GROWTH_RATE times the current capacity
+ *
+ * Realloc() function is used to change the capacity, when passing @c zero
+ * as argument, its behaviour is not defined by standard!!!
+ *
+ * @param vec   vector to be modified
+ * @param num   total number of elements that can be stored in the vector
+ * @return      true, if reallocation succeed or if there is enough space
  */
 bool vector_resize(Vector *vec, size_t num);
 
 
 /**
+ * @brief Returns current vector capacity
  *
+ * @param vec   vector to be processed
+ * @return      current vector capacity or @c NPOS if @p vec is @c NULL
  */
 size_t vector_capacity(Vector *vec);
 
@@ -230,7 +253,7 @@ bool vector_erase(Vector *vec, size_t pos);
  *
  * @param first,second  pointers to vector variables to be swapped
  */
-void vector_swap(Vector **first, Vector **second);
+bool vector_swap(Vector *first, Vector *second);
 
 
 /**

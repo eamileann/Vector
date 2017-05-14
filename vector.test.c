@@ -121,16 +121,30 @@ int main()
         vector_push_back(vec, "THIS IS TENTH ADITIONALLY INSERTED ELEMENT");
         test(vec);
 
+        printf("test - trying to swap with NULL pointer:\n");
+        vector_swap(vec, NULL);
+        test(vec);
+
+        printf("test - swaping with another vector with 5 elements:\n");
+        Vector *tmp = vector_new();
+        vector_push_back(tmp, "this is first element");
+        vector_push_back(tmp, "this is second element");
+        vector_push_back(tmp, "this is third element");
+        vector_push_back(tmp, "this is fourth element");
+        vector_push_back(tmp, "this is fifth element");
+        vector_swap(vec, tmp);
+        test(vec);
+
+        printf("test - swapping back:\n");
+        vector_swap(vec, tmp);
+        test(vec);
+
         printf("test - capacity enlarged to 128:\n");
         vector_resize(vec, 128);
         test(vec);
 
         printf("test - capacity reduced to 10:\n");
         vector_resize(vec, 10);
-        test(vec);
-
-        printf("test - one more element inserted:\n");
-        vector_insert(vec, vector_end(vec), "THIS IS THE LAST ELEMENT");
         test(vec);
 
         printf("test - cleared vector:\n");
