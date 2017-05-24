@@ -2,7 +2,7 @@
 #include "vector.h"
 
 /* testing function outputs */
-void test(Vector *vec)
+void test(Vector vec)
 {
         char buff[snprintf(NULL, 0, "%zu", NPOS) + 1]; /* max number of digits of size_t + '\0' */
 
@@ -65,7 +65,7 @@ int main()
 {
         printf("TESTING OUTPUT OF VECTOR FUNCTIONS:\n\n");
 
-        Vector *vec = NULL;
+        Vector vec = NULL;
 
         printf("test - NULL pointer:\n");
         test(vec);
@@ -126,7 +126,7 @@ int main()
         test(vec);
 
         printf("test - swaping with another vector with 5 elements:\n");
-        Vector *tmp = vector_new();
+        Vector tmp = vector_new();
         vector_push_back(tmp, "this is first element");
         vector_push_back(tmp, "this is second element");
         vector_push_back(tmp, "this is third element");

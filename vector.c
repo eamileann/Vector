@@ -1,7 +1,6 @@
 /**
  * @file        vector.c
  * @author      Michal Pajtinka
- * @date        2017/04/01
  *
  * @brief Functions for creating and accessing vecor.
  *
@@ -21,9 +20,9 @@ struct vector {
 };
 
 
-Vector *vector_new()
+Vector vector_new()
 {
-        Vector *vec = malloc(sizeof(Vector));
+        Vector vec = malloc(sizeof(struct vector));
         if (vec != NULL) {
                 vec->data_array = NULL;
                 vec->size = 0;
@@ -33,7 +32,7 @@ Vector *vector_new()
 }
 
 
-void vector_delete(Vector *vec)
+void vector_delete(Vector vec)
 {
         if (vec != NULL) {
                 if (vec->data_array != NULL) {
@@ -44,25 +43,25 @@ void vector_delete(Vector *vec)
 }
 
 
-size_t vector_begin(Vector *vec)
+size_t vector_begin(Vector vec)
 {
         return (vec != NULL && vec->size > 0) ? 0 : NPOS;
 }
 
 
-size_t vector_end(Vector *vec)
+size_t vector_end(Vector vec)
 {
         return (vec != NULL && vec->size > 0) ? (vec->size - 1) : NPOS;
 }
 
 
-size_t vector_size(Vector *vec)
+size_t vector_size(Vector vec)
 {
         return (vec != NULL) ? vec->size : NPOS;
 }
 
 
-bool vector_resize(Vector *vec, size_t num)
+bool vector_resize(Vector vec, size_t num)
 {
         if (vec == NULL) {
                 return false;
@@ -112,49 +111,49 @@ bool vector_resize(Vector *vec, size_t num)
 }
 
 
-size_t vector_capacity(Vector *vec)
+size_t vector_capacity(Vector vec)
 {
         return (vec == NULL) ? NPOS : vec->capacity;
 }
 
 
-bool vector_empty(Vector *vec)
+bool vector_empty(Vector vec)
 {
         return (vec != NULL && vec->size > 0) ? false : true;
 }
 
 
-void *vector_front(Vector *vec)
+void *vector_front(Vector vec)
 {
         return (vec != NULL && vec->size > 0) ? vec->data_array[0] : NULL;
 }
 
 
-void *vector_back(Vector *vec)
+void *vector_back(Vector vec)
 {
         return (vec != NULL && vec->size > 0) ? vec->data_array[vec->size-1] : NULL;
 }
 
 
-void *vector_at(Vector *vec, size_t pos)
+void *vector_at(Vector vec, size_t pos)
 {
         return (vec != NULL && vec->size > 0 && pos < vec->size) ? vec->data_array[pos] : NULL;
 }
 
 
-bool vector_push_back(Vector *vec, void *data)
+bool vector_push_back(Vector vec, void *data)
 {
         return vector_insert(vec, vector_end(vec) + 1, data);
 }
 
 
-bool vector_pop_back(Vector *vec)
+bool vector_pop_back(Vector vec)
 {
         return vector_erase(vec, vector_end(vec));
 }
 
 
-bool vector_insert(Vector *vec, size_t pos, void *data)
+bool vector_insert(Vector vec, size_t pos, void *data)
 {
         if (vec == NULL || pos == NPOS || pos > vec->size ||
                                 !vector_resize(vec, NPOS)) {
@@ -172,7 +171,7 @@ bool vector_insert(Vector *vec, size_t pos, void *data)
 }
 
 
-bool vector_erase(Vector *vec, size_t pos)
+bool vector_erase(Vector vec, size_t pos)
 {
         if (vec == NULL || pos == NPOS || pos >= vec->size) {
                 return false;
@@ -188,7 +187,7 @@ bool vector_erase(Vector *vec, size_t pos)
 }
 
 
-bool vector_swap(Vector *first, Vector *second)
+bool vector_swap(Vector first, Vector second)
 {
         if (first == NULL || second == NULL) {
                 return false;
@@ -210,7 +209,7 @@ bool vector_swap(Vector *first, Vector *second)
 }
 
 
-void vector_clear(Vector *vec)
+void vector_clear(Vector vec)
 {
         if (vec == NULL) {
                 return;

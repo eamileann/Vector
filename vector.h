@@ -1,11 +1,10 @@
 /**
  * @file        vector.h
  * @author      Michal Pajtinka
- * @date        2017/04/01
  *
- * @brief Interface for creating vecor.
+ * @brief Interface for creating vector.
  *
- * This file declares functions, types and macros  for creating containers
+ * This file declares functions, types and macros for creating containers
  * for data of any type.
  * 
  * Creating and destroying Vectors:
@@ -52,7 +51,7 @@
  * Vector is an opaque type. To work with it, use provided functions, but do
  * not try to access its members directly.
  */
-typedef struct vector Vector;
+typedef struct vector *Vector;
 
 
 /**
@@ -65,7 +64,7 @@ typedef struct vector Vector;
  * @return      pointer to newly created vector or
  *              @c NULL if the vector is not created
  */
-Vector *vector_new();
+Vector vector_new();
 
 
 /**
@@ -79,7 +78,7 @@ Vector *vector_new();
  *
  * @param vec   vector to be erased
  */
-void vector_delete(Vector *vec);
+void vector_delete(Vector vec);
 
 
 /**
@@ -89,7 +88,7 @@ void vector_delete(Vector *vec);
  * @return      @c NPOS if vector is empty or if @p vec == @c NULL,
  *              otherwise @c 0 (index of first element)
  */
-size_t vector_begin(Vector *vec);
+size_t vector_begin(Vector vec);
 
 
 /**
@@ -99,7 +98,7 @@ size_t vector_begin(Vector *vec);
  * @return      @c NPOS if vector is empty or if @p vec == @c NULL,
  *              otherwise @c 0 (index of first element) 
  */
-size_t vector_end(Vector *vec);
+size_t vector_end(Vector vec);
 
 
 /**
@@ -109,7 +108,7 @@ size_t vector_end(Vector *vec);
  * @return      number of vecetor elements or
  *              @c NPOS if @p vec is @c NULL
  */
-size_t vector_size(Vector *vec);
+size_t vector_size(Vector vec);
 
 
 /**
@@ -139,7 +138,7 @@ size_t vector_size(Vector *vec);
  * @param num   total number of elements that can be stored in the vector
  * @return      true, if reallocation succeed or if there is enough space
  */
-bool vector_resize(Vector *vec, size_t num);
+bool vector_resize(Vector vec, size_t num);
 
 
 /**
@@ -148,7 +147,7 @@ bool vector_resize(Vector *vec, size_t num);
  * @param vec   vector to be processed
  * @return      current vector capacity or @c NPOS if @p vec is @c NULL
  */
-size_t vector_capacity(Vector *vec);
+size_t vector_capacity(Vector vec);
 
 
 /**
@@ -157,7 +156,7 @@ size_t vector_capacity(Vector *vec);
  * @param vec   vector to be processed
  * @return      @c true if empty or @p vec is @c NULL, @c false otherwise
  */
-bool vector_empty(Vector *vec);
+bool vector_empty(Vector vec);
 
 
 /**
@@ -167,7 +166,7 @@ bool vector_empty(Vector *vec);
  * @return      @c NULL if the vector is empty,
  *              otherwise pointer to first element
  */
-void *vector_front(Vector *vec);
+void *vector_front(Vector vec);
 
 
 /**
@@ -177,7 +176,7 @@ void *vector_front(Vector *vec);
  * @return      @c NULL if the vector is empty,
  *              otherwise pointer to the last element
  */
-void *vector_back(Vector *vec);
+void *vector_back(Vector vec);
 
 
 /**
@@ -190,7 +189,7 @@ void *vector_back(Vector *vec);
  * @return      @c NULL if the vector is empty,
  *              otherwise pointer to element on given position
  */
-void *vector_at(Vector *vec, size_t pos);
+void *vector_at(Vector vec, size_t pos);
 
 
 /**
@@ -205,7 +204,7 @@ void *vector_at(Vector *vec, size_t pos);
  *
  * @return      @c true if successful, @c false otherwise
  */
-bool vector_push_back(Vector *vec, void *data);
+bool vector_push_back(Vector vec, void *data);
 
 
 /**
@@ -218,7 +217,7 @@ bool vector_push_back(Vector *vec, void *data);
  * @param vec   vector to be processed
  * @return      @c true if successful, @c false otherwise
  */
-bool vector_pop_back(Vector *vec);
+bool vector_pop_back(Vector vec);
 
 
 /**
@@ -232,7 +231,7 @@ bool vector_pop_back(Vector *vec);
  * @param data  pointer to data to be stored in vector
  * @return      @c true, if element was inserted, @c false otherwise
  */
-bool vector_insert(Vector *vec, size_t pos, void *data);
+bool vector_insert(Vector vec, size_t pos, void *data);
 
 
 /**
@@ -245,7 +244,7 @@ bool vector_insert(Vector *vec, size_t pos, void *data);
  * @param pos   position of new element in the vector
  * @return      @c true, if element was erased, @c false otherwise
  */
-bool vector_erase(Vector *vec, size_t pos);
+bool vector_erase(Vector vec, size_t pos);
 
 
 /**
@@ -253,7 +252,7 @@ bool vector_erase(Vector *vec, size_t pos);
  *
  * @param first,second  pointers to vector variables to be swapped
  */
-bool vector_swap(Vector *first, Vector *second);
+bool vector_swap(Vector first, Vector second);
 
 
 /**
@@ -264,6 +263,6 @@ bool vector_swap(Vector *first, Vector *second);
  *
  * @param vec   vecotr to be processed
  */
-void vector_clear(Vector *vec);
+void vector_clear(Vector vec);
 
 #endif /* end of include guard: VECTOR_H */
