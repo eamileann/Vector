@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "vector.h"
 
-/* testing function outputs */
+/* testing function */
 void test(Vector vec)
 {
         char buff[snprintf(NULL, 0, "%zu", NPOS) + 1]; /* max number of digits of size_t + '\0' */
