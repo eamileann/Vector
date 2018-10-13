@@ -261,7 +261,7 @@ bool vector_swap(Vector first, Vector second);
  * This function removes all elements from vector, leaving @p vec empty and
  * setting vec size to 0. Memory allocated for vector data remains the same.
  *
- * @param vec   vecotr to be processed
+ * @param vec   vector to be processed
  */
 void vector_clear(Vector vec);
 
