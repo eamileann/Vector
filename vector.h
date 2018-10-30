@@ -5,7 +5,7 @@
  * @brief Interface for creating vector.
  *
  * This file declares functions, types and macros for creating containers
- * for data of any type.
+ * for data of any type (similar to vectors used in C++).
  * 
  * Creating and destroying Vectors:
  *      vector_new
