@@ -3,7 +3,7 @@
 # What is this?
 Simple vector implementation in C inspired by C++ Vector class.
 
-# Why have I wrote this?
+# Why did I write this?
 I wrote this because I didn't find any other C implementation of vector I would be satisfied with. I like OOP way of thinking even when programming in pure C and I was very familiar with using vector while learning C++. I needed some comfortable way to store   and process gigabytes of scientific data while parsing them out of database, all as part of my diploma thesis.
 
 # How to use this?
